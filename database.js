@@ -2,10 +2,11 @@ const mysql = require('mysql');
 
 // Set database connection credentials
 const config = {
-    host: 'localhost',
-    user: 'root',
-    password: 'Mrbean@201191',
-    database: 'studentAdmin',
+    host: '',
+    user: '',
+    port: '',
+    password: '',
+    database: '',
 };
 
 // Create a MySQL pool
