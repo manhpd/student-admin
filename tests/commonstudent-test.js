@@ -52,6 +52,29 @@ describe('/POST commonstudents', () => {
     });
 });
 
+describe('/POST commonstudents', () => {
+    it('it should send an meaningful error message', (done) => {
+         setTimeout( function () {
+            const body = {
+                "teacher": "",
+                "students":
+                    [
+                      "studentjon@example.com",
+                      "studentmarrie@example.com"
+                    ]
+            };
+            chai.request(app)
+            .post('/api/commonstudents')
+            .send(body)
+            .end((err, res) => {
+                res.should.have.status(400);
+                 res.body.should.have.property('message');
+                done();
+            });
+         },100);
+    });
+});
+
 describe('/GET commonstudents', () => {
     it('it should Get students of teacher ken', (done) => {
         chai.request(app)
@@ -74,7 +97,7 @@ describe('/GET commonstudents', () => {
             res.should.have.status(200);
             res.body.should.be.a('object');
             res.body.should.have.property('students').to.be.an('array');
-            res.body.should.have.property('students').to.have.length(3);
+            res.body.should.have.property('students').to.have.length(1);
             done();
         });
     });
@@ -157,6 +180,64 @@ describe('/POST deleteall', () => {
         .end((err, res) => {
             res.should.have.status(204);
            
+            done();
+        });
+    });
+});
+
+describe('/POST commonstudents', () => {
+    it('it should send an meaningful error message', (done) => {
+         setTimeout( function () {
+            const body = {
+                "teacher": "",
+                "students":
+                    [
+                      "studentjon@example.com",
+                      "studentmarrie@example.com"
+                    ]
+            };
+            chai.request(app)
+            .post('/api/commonstudents')
+            .send(body)
+            .end((err, res) => {
+                res.should.have.status(400);
+                 res.body.should.have.property('message');
+                done();
+            });
+         },100);
+    });
+});
+
+
+describe('/POST retrievefornotifications', () => {
+    it('it should send an meaningful message', (done) => {
+        const data = {
+            teacherabc: "teacherken@gmail.com",
+            notification: "hello @studentmarrie@example.com",
+        };
+
+        chai.request(app)
+        .post('/api/retrievefornotifications')
+        .send(data)
+        .end((err, res) => {
+            res.should.have.status(400);
+            res.body.should.have.property('message');
+            done();
+        });
+    });
+});
+
+describe('/POST commonstudents', () => {
+    it('it should suspend the student', (done) => {
+        const body = {
+            "woringstudendbody": "studentjon@example.com"
+        };
+        chai.request(app)
+        .post('/api/suspend')
+        .send(body)
+        .end((err, res) => {
+            res.should.have.status(400);
+            res.body.should.have.property('message');
             done();
         });
     });
