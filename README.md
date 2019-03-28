@@ -11,11 +11,11 @@
  1. clone the repository ```git clone https://github.com/tariqulislam/express-mysql-rest.git```
  2. run command for npm ```npm install``` 
  3. configur databse connection in database.js
- 4. create table in mysql ```CREATE TABLE IF NOT EXISTS tasks (
+ 4. create table in mysql ```CREATE TABLE IF NOT EXISTS teacherStudent (
     teacher VARCHAR(45) NOT NULL,
     student VARCHAR(45) NOT NULL,
     isDispend BOOLEAN DEFAULT '0'
-)  INNODB;```
+)  ;```
  5. run unit test command  ```npm test tests\commonstudents.js```
  6. starting the server ```npm start```
  
